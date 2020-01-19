@@ -1,0 +1,37 @@
+<idea-plugin>
+  <id>com.your.company.unique.plugin.id</id>
+  <name>DaoHelper</name>
+  <version>1.0</version>
+  <vendor email="lsl.yx@foxmail.com" url="http://zl3.club">zl3</vendor>
+
+  <description><![CDATA[
+    用于反编译数据库，生成实体，Dao接口与接口对应的mapper映射文件
+  ]]></description>
+
+  <change-notes><![CDATA[
+      created plugin.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="DaoHelper.DaoHelperAction" class="sll.plugin.helper.action.MainAction" text="DaoHelper" description="dao helper">
+      <add-to-group group-id="BuildMenu" anchor="first"/>
+    </action>
+  </actions>
+
+</idea-plugin>
