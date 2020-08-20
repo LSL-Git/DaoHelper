@@ -28,18 +28,19 @@ public class SelectionUI extends JFrame {
     private ConnectionSettings connectionSettings;
 
     private JPanel contentPanel = new JPanel();
-    private JPanel btnPanel = new JBPanel<>();
+    private JPanel bntPanel = new JBPanel<>();
 
     private JPanel northPanel = new JBPanel<>();
     private JPanel centerPanel = new JBPanel<>();
     private JPanel southPanel = new JBPanel<>();
 
     // 按钮
+    private JButton buttonCharge = new JButton("换 库");
     private JButton buttonNext = new JButton("下一步");
     private JButton buttonCancel = new JButton("取 消");
     private JLabel selectedNum = new JLabel("（已选：0）");
 
-    SelectionUI(AnActionEvent actionEvent, ConnectionSettings connectionSettings) throws Exception {
+    public SelectionUI(AnActionEvent actionEvent, ConnectionSettings connectionSettings) throws Exception {
         this.connectionSettings = connectionSettings;
 
         northPanel.add(new JLabel("请选择需要操作的表[按Ctrl或Shift进行多选]"));
@@ -55,11 +56,12 @@ public class SelectionUI extends JFrame {
         centerPanel.add(jScrollPane);
 
         // 添加按钮控件
-        btnPanel.setLayout(new BoxLayout(btnPanel, BoxLayout.X_AXIS));
-        btnPanel.setBorder(JBUI.Borders.empty());
-        btnPanel.add(buttonNext);
-        btnPanel.add(buttonCancel);
-        southPanel.add(btnPanel);
+        bntPanel.setLayout(new BoxLayout(bntPanel, BoxLayout.X_AXIS));
+        bntPanel.setBorder(JBUI.Borders.empty());
+        bntPanel.add(buttonCharge);
+        bntPanel.add(buttonNext);
+        bntPanel.add(buttonCancel);
+        southPanel.add(bntPanel);
 
         // 设置主窗体
         setTitle("选择表");
@@ -70,7 +72,7 @@ public class SelectionUI extends JFrame {
         contentPanel.add(northPanel, BorderLayout.NORTH);
         contentPanel.add(centerPanel, BorderLayout.CENTER);
         contentPanel.add(southPanel, BorderLayout.SOUTH);
-        setPreferredSize(new Dimension(340, 700));
+        setPreferredSize(new Dimension(340, 720));
         // 设置窗体屏幕居中
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         int x = (int) (toolkit.getScreenSize().getWidth() - getPreferredSize().getWidth()) / 2;
@@ -78,6 +80,13 @@ public class SelectionUI extends JFrame {
         setLocation(x, y);
         pack();
         setVisible(true);
+
+        // 切换数据库
+        buttonCharge.addActionListener(e -> {
+            new InfoUI(actionEvent);
+            // 关闭当前窗口
+            onCancel();
+        });
 
         // 添加点击事件
         buttonNext.addActionListener(e -> {

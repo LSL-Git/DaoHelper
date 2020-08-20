@@ -1,6 +1,5 @@
 package sll.plugin.helper.utils;
 
-import b.e.A;
 import sll.plugin.helper.dto.TableColumnDTO;
 import sll.plugin.helper.exception.BaseException;
 import sll.plugin.helper.model.ConnectionSettings;
@@ -126,8 +125,7 @@ public class DatabaseUtil {
         if (connectionSettings.getHost().isEmpty()
                 || connectionSettings.getPort().isEmpty()
                 || connectionSettings.getDatabase().isEmpty()
-                || connectionSettings.getUsername().isEmpty()
-                || connectionSettings.getPassword().isEmpty()) {
+                || connectionSettings.getUsername().isEmpty()) {
             throw new BaseException("连接失败，连接信息错误");
         }
     }

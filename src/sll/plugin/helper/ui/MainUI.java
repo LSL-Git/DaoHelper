@@ -6,6 +6,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.TextBrowseFolderListener;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.ui.Gray;
+import com.intellij.ui.JBColor;
 import com.intellij.ui.components.JBList;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.components.JBScrollPane;
@@ -36,14 +37,14 @@ public class MainUI extends JFrame {
     private AnActionEvent actionEvent;
 
     private JPanel contentPanel = new JPanel();
-    private JPanel btnPanel = new JBPanel<>();
+    private JPanel bntPanel = new JBPanel<>();
 
     private JPanel westPanel = new JBPanel<>();
     private JPanel centerPanel = new JBPanel<>();
     private JPanel southPanel = new JBPanel<>();
 
     // 按钮
-    private JButton buttonPrev = new JButton("重新选择");
+    private JButton buttonPrev = new JButton("重 选");
     private JButton buttonDo = new JButton("生 成");
     private JButton buttonCancel = new JButton("取 消");
     private JButton buttonRemove = new JButton("移 除");
@@ -73,12 +74,12 @@ public class MainUI extends JFrame {
         centerPanel.add(getMapperSettingPanel());
 
         // 添加按钮控件
-        btnPanel.setLayout(new BoxLayout(btnPanel, BoxLayout.X_AXIS));
-        btnPanel.setBorder(JBUI.Borders.empty());
-        btnPanel.add(buttonPrev);
-        btnPanel.add(buttonDo);
-        btnPanel.add(buttonCancel);
-        southPanel.add(btnPanel);
+        bntPanel.setLayout(new BoxLayout(bntPanel, BoxLayout.X_AXIS));
+        bntPanel.setBorder(JBUI.Borders.empty());
+        bntPanel.add(new Label("*注：生成文件会将同名文件覆盖，且无法恢复！"));
+        bntPanel.add(buttonDo);
+        bntPanel.add(buttonCancel);
+        southPanel.add(bntPanel);
 
         // 设置主窗体
         setTitle("配置生成");
@@ -90,7 +91,7 @@ public class MainUI extends JFrame {
         contentPanel.add(westPanel, BorderLayout.WEST);
         contentPanel.add(centerPanel, BorderLayout.CENTER);
         contentPanel.add(southPanel, BorderLayout.SOUTH);
-        setPreferredSize(new Dimension(880, 630));
+        setPreferredSize(new Dimension(1045, 680));
         // 设置窗体屏幕居中
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         int x = (int) (toolkit.getScreenSize().getWidth() - getPreferredSize().getWidth()) / 2;
@@ -264,8 +265,8 @@ public class MainUI extends JFrame {
     private static final int T2 = 2;
     private static final int T3 = 3;
 
-    private static final int COMMON_WIDTH = 610;
-    private static final int COMMON_HEIGHT = 150;
+    private static final int COMMON_WIDTH = 780;
+    private static final int COMMON_HEIGHT = 190;
 
     private JTextField mapperPathField = new JTextField("src/main/resources");
     private JTextField mapperPackageField = new JTextField("mapper");
@@ -292,10 +293,10 @@ public class MainUI extends JFrame {
         JLabel jLabel = new JLabel("可生成方法：");
         jLabel.setPreferredSize(new Dimension(600, 30));
         panel.add(jLabel);
-        panel.add(getCheckBoxPanel(methodTextMap, 50, T3));
+        panel.add(getCheckBoxPanel(methodTextMap, 60, T3));
 
         panel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        panel.setPreferredSize(new Dimension(COMMON_WIDTH, (int) (COMMON_HEIGHT * 1.3)));
+        panel.setPreferredSize(new Dimension(COMMON_WIDTH, COMMON_HEIGHT));
         panel.setBorder(JBUI.Borders.customLine(Gray._50));
         return panel;
     }
@@ -313,7 +314,7 @@ public class MainUI extends JFrame {
         panel.add(getRow2Panel(daoPathField, daoPackageField, repositoryCBox, mapperCBox));
 
         panel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        panel.setPreferredSize(new Dimension(COMMON_WIDTH, (int) (COMMON_HEIGHT * 0.7)));
+        panel.setPreferredSize(new Dimension(COMMON_WIDTH, (int) (COMMON_HEIGHT * 0.5)));
         panel.setBorder(JBUI.Borders.customLine(Gray._50));
         return panel;
     }
@@ -390,11 +391,15 @@ public class MainUI extends JFrame {
         panel.add(getRow2Panel(entityPathField, entityPackageField, commentCBox, serializeCBox));
 
         init();
-        panel.add(normalRButton);
-        panel.add(lombokRButton);
+        JPanel rpanel = new JBPanel<>();
+        rpanel.add(normalRButton);
+        rpanel.add(lombokRButton);
+        rpanel.setPreferredSize(new Dimension(750, 35));
+        rpanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panel.add(rpanel);
         normalCheckBoxPanel = getCheckBoxPanel(normalCbTextMap, 25, T1);
         panel.add(normalCheckBoxPanel);
-        lombokCheckBoxPanel = getCheckBoxPanel(lombokCbTextMap, 50, T2);
+        lombokCheckBoxPanel = getCheckBoxPanel(lombokCbTextMap, 60, T2);
         lombokCheckBoxPanel.setVisible(false);
         panel.add(lombokCheckBoxPanel);
         // 添加点击事件
@@ -477,9 +482,12 @@ public class MainUI extends JFrame {
         // 设置可多选
         jList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         JScrollPane jScrollPane = new JBScrollPane(jList);
-        jScrollPane.setPreferredSize(new Dimension(180, 480));
+        jScrollPane.setPreferredSize(new Dimension(200, 500));
         leftPanel.add(jScrollPane, BorderLayout.CENTER);
-        leftPanel.add(buttonRemove, BorderLayout.SOUTH);
+        JPanel bntPanel = new JPanel();
+        bntPanel.add(buttonPrev);
+        bntPanel.add(buttonRemove);
+        leftPanel.add(bntPanel, BorderLayout.SOUTH);
         return leftPanel;
     }
 

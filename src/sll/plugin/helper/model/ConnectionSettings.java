@@ -65,4 +65,15 @@ public class ConnectionSettings {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "ConnectionSettings{" +
+                "host='" + host + '\'' +
+                ", port='" + port + '\'' +
+                ", database='" + database + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

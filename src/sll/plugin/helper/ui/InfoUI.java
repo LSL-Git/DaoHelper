@@ -1,5 +1,6 @@
 package sll.plugin.helper.ui;
 
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
@@ -11,9 +12,11 @@ import com.intellij.ui.components.JBPasswordField;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.SystemIndependent;
+import sll.plugin.helper.enums.LocalCacheEnum;
 import sll.plugin.helper.model.ConnectionSettings;
 import sll.plugin.helper.utils.DatabaseUtil;
 import sll.plugin.helper.utils.MessageUtil;
+import sll.plugin.helper.utils.StateLocalCacheUtil;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
@@ -36,7 +39,7 @@ public class InfoUI extends JFrame {
 
     private JPanel contentPanel = new JBPanel<>();
     private JPanel filedPanel = new JBPanel<>();
-    private JPanel btnPanel = new JBPanel<>();
+    private JPanel bntPanel = new JBPanel<>();
 
     // 按钮
     private JButton buttonTest = new JButton("测试连接");
@@ -76,22 +79,32 @@ public class InfoUI extends JFrame {
         filedPanel.setLayout(new GridLayout(5, 2));
         filedPanel.setBorder(JBUI.Borders.empty(8, 8, 2, 8));
 
+        // 获取本地缓存信息
+        ConnectionSettings connectionSettings = StateLocalCacheUtil.get(LocalCacheEnum.CONNECTION_SETTINGS_STATE);
+        if (connectionSettings == null) {
+            // 默认值
+            connectionSettings = new ConnectionSettings();
+            connectionSettings.setHost("127.0.0.1");
+            connectionSettings.setPort("3306");
+            connectionSettings.setUsername("root");
+        }
+
         // 添加输入框控件
-        filedPanel.add(getFiledPanel("主机地址:", "127.0.0.1", hostField));
-        filedPanel.add(getFiledPanel("端口:", "3306", portField));
-        filedPanel.add(getFiledPanel("数据库:", "ktx_v2", databaseField));
-        filedPanel.add(getFiledPanel("用户名:", "root", usernameField));
-        filedPanel.add(getFiledPanel("密码:", "ktx777552", passwordField));
+        filedPanel.add(getFiledPanel("主机地址:", connectionSettings.getHost(), hostField));
+        filedPanel.add(getFiledPanel("端口:", connectionSettings.getPort(), portField));
+        filedPanel.add(getFiledPanel("数据库:", connectionSettings.getDatabase(), databaseField));
+        filedPanel.add(getFiledPanel("用户名:", connectionSettings.getUsername(), usernameField));
+        filedPanel.add(getFiledPanel("密码:", connectionSettings.getPassword(), passwordField));
         contentPanel.add(filedPanel);
 
         // 添加按钮控件
-        btnPanel.setLayout(new BoxLayout(btnPanel, BoxLayout.X_AXIS));
-        btnPanel.setBorder(JBUI.Borders.empty(1, 5));
-        btnPanel.add(buttonTest);
-        btnPanel.add(buttonOK);
-        btnPanel.add(buttonCancel);
-//        btnPanel.add(tbuttonCancel);
-        contentPanel.add(btnPanel);
+        bntPanel.setLayout(new BoxLayout(bntPanel, BoxLayout.X_AXIS));
+        bntPanel.setBorder(JBUI.Borders.empty(1, 5));
+        bntPanel.add(buttonTest);
+        bntPanel.add(buttonOK);
+        bntPanel.add(buttonCancel);
+//        bntPanel.add(tbuttonCancel);
+        contentPanel.add(bntPanel);
 
         // 添加按钮监听
         buttonTest.addActionListener(e -> {
@@ -101,11 +114,10 @@ public class InfoUI extends JFrame {
         });
 
         buttonOK.addActionListener(e -> {
-            System.out.println("ok");
             if (testConnection()) {
-                // 跳转下一步
-//                MessageUtil.success("下一步");
                 try {
+                    // 将连接信息缓存到本地
+                    StateLocalCacheUtil.set(LocalCacheEnum.CONNECTION_SETTINGS_STATE, getConnectionSettings());
                     new SelectionUI(actionEvent, getConnectionSettings());
                 } catch (Exception e1) {
                     MessageUtil.error(e1.getMessage());
