@@ -53,4 +53,14 @@ public class TableColumnDTO {
     public void setColumnComment(String columnComment) {
         this.columnComment = columnComment;
     }
+
+    @Override
+    public String toString() {
+        return "TableColumnDTO{" +
+                "columnName='" + columnName + '\'' +
+                ", dataType='" + dataType + '\'' +
+                ", columnComment='" + columnComment + '\'' +
+                ", isPrimaryKey=" + isPrimaryKey +
+                '}';
+    }
 }

@@ -8,7 +8,7 @@ public enum LombokAnnotationEnum {
     ALL_ARGS_CONSTRUCTOR("@AllArgsConstructor", false, "lombok.AllArgsConstructor"),
     NO_ARGS_CONSTRUCTOR("@NoArgsConstructor", false, "lombok.NoArgsConstructor"),
     TO_STRING("@ToString", false, "lombok.ToString"),
-    ACCESSORS("@Accessors(chain=true)", false, "lombok.experimental.Accessors"),
+    ACCESSORS("@Accessors(chain = true)", false, "lombok.experimental.Accessors"),
     GETTER("@Getter", false, "lombok.Getter"),
     SETTER("@Setter", false, "lombok.Setter");
 
