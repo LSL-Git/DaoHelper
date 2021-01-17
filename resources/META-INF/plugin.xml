@@ -1,37 +1,50 @@
 <idea-plugin>
-  <id>com.your.company.unique.plugin.id</id>
-  <name>DaoHelper</name>
-  <version>1.0</version>
-  <vendor email="lsl.yx@foxmail.com" url="http://zl3.club">zl3</vendor>
+    <!-- 插件唯一id，不能和其他插件项目重复，所以推荐使用com.xxx.xxx的格式
+         插件不同版本之间不能更改，若没有指定，则与插件名称相同 -->
+    <id>com.lsl.plugin</id>
 
-  <description><![CDATA[
-    用于反编译数据库，生成实体，Dao接口与接口对应的mapper映射文件
-  ]]></description>
+    <!--  插件名称，别人在官方插件库搜索你的插件时使用的名称 -->
+    <name>MybatisHelperPro</name>
 
-  <change-notes><![CDATA[
-      created plugin.<br>
-      <em>most HTML tags may be used</em>
-    ]]>
-  </change-notes>
+    <!--  插件版本-->
+    <version>1.0.0</version>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="173.0"/>
+    <!-- 供应商主页和email -->
+    <vendor email="lsl.yx@foxmail.com" url="https://plugins.jetbrains.com/">zl3</vendor>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- 插件描述 -->
+    <description>用于反编译数据库表，生成实体entity，dao接口与接口对应的mapper映射文件的助手</description>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-  </extensions>
+    <!-- 插件版本变更信息，支持HTML标签；
+         将展示在 settings | Plugins 对话框和插件仓库的Web页面 -->
+    <change-notes><![CDATA[
+    <ul>v1.0.0</ul>
+      <li>支持反编译数据库表，生成实体entity，接口dao与接口对应的mapper映射文件</li>
+      <li>Decompile database tables to generate entity, Dao and mapper mapping files.</li>
+  ]]></change-notes>
 
-  <actions>
-    <!-- Add your actions here -->
-    <action id="DaoHelper.DaoHelperAction" class="sll.plugin.helper.action.MainAction" text="DaoHelper" description="dao helper">
-      <add-to-group group-id="BuildMenu" anchor="first"/>
-    </action>
-  </actions>
+    <!-- 插件兼容IDEA的最大和最小 build 号，两个属性可以任选一个或者同时使用
+          官网详细介绍：http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html-->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <group id="SllPlugin.SllTools" text="LDevKit" description="LSL development tools">
+          <add-to-group group-id="MainMenu" anchor="last" />
+            <action id="MybatisHelperPro.MainAction" class="sll.plugin.helper.action.MainAction" text="MybatisHelperPro" description="Main action" />
+<!--            <action id="JsonHelperPro.MainAction" class="sll.plugin.helper.action.MainAction" text="JsonHelper" description="Main action" />-->
+        </group>
+
+    </actions>
 
 </idea-plugin>
