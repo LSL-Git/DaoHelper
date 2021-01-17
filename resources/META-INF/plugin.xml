@@ -18,16 +18,19 @@
             <li>用于反编译数据库表，生成实体entity，dao接口与接口对应的mapper映射文件的可视化助手。</li>
             <li>Visual assistant for decompiling database table, generating entity, Dao interface and mapper mapping file corresponding to interface.</li>
         </ul>
+        <div>
+            <a href="https://blog.csdn.net/liangshilin?spm=1000.2115.3001.5343">更多/more</a>
+        </div>
     ]]></description>
 
     <!-- 插件版本变更信息，支持HTML标签；
          将展示在 settings | Plugins 对话框和插件仓库的Web页面 -->
     <change-notes><![CDATA[
-    <dl>
-        <dt>v1.0.0</dt>
-        <dd>- 支持反编译数据库表，生成实体entity，接口dao与接口对应的mapper映射文件</dd>
-        <dd>- Decompile database tables to generate entity, Dao and mapper mapping files.</dd>
-    </dl>
+        <div>1.0.0</div>
+        <ul>
+            <li>支持输入数据库信息登录数据库，选择单个或多个库表，配置生成代码规则，并执行生成实体，Dao接口与Mapper。</li>
+            <li>It supports inputting database information, logging in database, selecting single or multiple database tables, configuring generation code rules, executing generation entities, Dao interface and mapper.</li>
+        </ul>
   ]]></change-notes>
 
     <!-- 插件兼容IDEA的最大和最小 build 号，两个属性可以任选一个或者同时使用
