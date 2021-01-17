@@ -10,17 +10,24 @@
     <version>1.0.0</version>
 
     <!-- 供应商主页和email -->
-    <vendor email="lsl.yx@foxmail.com" url="https://plugins.jetbrains.com/">zl3</vendor>
+    <vendor email="lsl.yx@foxmail.com" url="https://blog.csdn.net/liangshilin?spm=1000.2115.3001.5343">@瞌睡虫</vendor>
 
     <!-- 插件描述 -->
-    <description>用于反编译数据库表，生成实体entity，dao接口与接口对应的mapper映射文件的助手</description>
+    <description><![CDATA[
+        <ul>
+            <li>用于反编译数据库表，生成实体entity，dao接口与接口对应的mapper映射文件的可视化助手。</li>
+            <li>Visual assistant for decompiling database table, generating entity, Dao interface and mapper mapping file corresponding to interface.</li>
+        </ul>
+    ]]></description>
 
     <!-- 插件版本变更信息，支持HTML标签；
          将展示在 settings | Plugins 对话框和插件仓库的Web页面 -->
     <change-notes><![CDATA[
-    <ul>v1.0.0</ul>
-      <li>支持反编译数据库表，生成实体entity，接口dao与接口对应的mapper映射文件</li>
-      <li>Decompile database tables to generate entity, Dao and mapper mapping files.</li>
+    <dl>
+        <dt>v1.0.0</dt>
+        <dd>- 支持反编译数据库表，生成实体entity，接口dao与接口对应的mapper映射文件</dd>
+        <dd>- Decompile database tables to generate entity, Dao and mapper mapping files.</dd>
+    </dl>
   ]]></change-notes>
 
     <!-- 插件兼容IDEA的最大和最小 build 号，两个属性可以任选一个或者同时使用
