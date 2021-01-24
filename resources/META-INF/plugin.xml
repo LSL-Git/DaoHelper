@@ -7,7 +7,7 @@
     <name>MybatisHelperPro</name>
 
     <!--  插件版本-->
-    <version>1.0.0</version>
+    <version>1.0.0-release</version>
 
     <!-- 供应商主页和email -->
     <vendor email="lsl.yx@foxmail.com" url="https://blog.csdn.net/liangshilin?spm=1000.2115.3001.5343">@瞌睡虫</vendor>
@@ -15,11 +15,12 @@
     <!-- 插件描述 -->
     <description><![CDATA[
         <ul>
-            <li>用于反编译数据库表，生成实体entity，dao接口与接口对应的mapper映射文件的可视化助手。</li>
             <li>Visual assistant for decompiling database table, generating entity, Dao interface and mapper mapping file corresponding to interface.</li>
+            <li>用于反编译数据库表，生成实体entity，dao接口与接口对应的mapper映射文件的可视化助手。</li>
         </ul>
         <div>
-            <a href="https://blog.csdn.net/liangshilin?spm=1000.2115.3001.5343">更多/more</a>
+            <a href="https://plugins.jetbrains.com/plugin/15863-mybatishelperpro/usage-instructions?preview=true">usage</a>|
+            <a href="https://blog.csdn.net/liangshilin?spm=1000.2115.3001.5343">more/更多</a>
         </div>
     ]]></description>
 
@@ -28,8 +29,8 @@
     <change-notes><![CDATA[
         <div>1.0.0</div>
         <ul>
-            <li>支持输入数据库信息登录数据库，选择单个或多个库表，配置生成代码规则，并执行生成实体，Dao接口与Mapper。</li>
             <li>It supports inputting database information, logging in database, selecting single or multiple database tables, configuring generation code rules, executing generation entities, Dao interface and mapper.</li>
+            <li>支持输入数据库信息登录数据库，选择单个或多个库表，配置生成代码规则，并执行生成实体，Dao接口与Mapper。</li>
         </ul>
   ]]></change-notes>
 
@@ -50,9 +51,8 @@
     <actions>
         <!-- Add your actions here -->
         <group id="SllPlugin.SllTools" text="LDevKit" description="LSL development tools">
-          <add-to-group group-id="MainMenu" anchor="last" />
-            <action id="MybatisHelperPro.MainAction" class="sll.plugin.helper.action.MainAction" text="MybatisHelperPro" description="Main action" />
-<!--            <action id="JsonHelperPro.MainAction" class="sll.plugin.helper.action.MainAction" text="JsonHelper" description="Main action" />-->
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action id="MybatisHelperPro.MainAction" class="sll.plugin.helper.action.MainAction" text="MybatisHelperPro" description="Main action"/>
         </group>
 
     </actions>
