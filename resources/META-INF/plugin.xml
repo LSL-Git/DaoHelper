@@ -19,7 +19,8 @@
             <li>用于反编译数据库表，生成实体entity，dao接口与接口对应的mapper映射文件的可视化助手。</li>
         </ul>
         <div>
-            <a href="https://plugins.jetbrains.com/plugin/15863-mybatishelperpro/usage-instructions?preview=true">usage</a>|
+            <a href="https://gitee.com/lsl-gitee/LDevKit/blob/master/MybatisHelperPro/README.en.md">usage</a>|
+            <a href="https://gitee.com/lsl-gitee/LDevKit/issues">issue</a>|
             <a href="https://blog.csdn.net/liangshilin?spm=1000.2115.3001.5343">more/更多</a>
         </div>
     ]]></description>
