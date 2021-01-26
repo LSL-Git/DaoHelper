@@ -7,7 +7,7 @@
     <name>MybatisHelperPro</name>
 
     <!--  插件版本-->
-    <version>1.0.0-release</version>
+    <version>1.0.1-release</version>
 
     <!-- 供应商主页和email -->
     <vendor email="lsl.yx@foxmail.com" url="https://blog.csdn.net/liangshilin?spm=1000.2115.3001.5343">@瞌睡虫</vendor>
@@ -21,13 +21,18 @@
         <div>
             <a href="https://gitee.com/lsl-gitee/LDevKit/blob/master/MybatisHelperPro/README.en.md">usage</a>|
             <a href="https://gitee.com/lsl-gitee/LDevKit/issues">issue</a>|
-            <a href="https://blog.csdn.net/liangshilin?spm=1000.2115.3001.5343">more/更多</a>
+            <a href="https://blog.csdn.net/liangshilin?spm=1000.2115.3001.5343">more</a>
         </div>
     ]]></description>
 
     <!-- 插件版本变更信息，支持HTML标签；
          将展示在 settings | Plugins 对话框和插件仓库的Web页面 -->
     <change-notes><![CDATA[
+        <div>1.0.1-release</div>
+        <ul>
+            <li>Updated version compatibility to 182+.</li>
+            <li>更新版本兼容性至182+</li>
+        </ul>
         <div>1.0.0</div>
         <ul>
             <li>It supports inputting database information, logging in database, selecting single or multiple database tables, configuring generation code rules, executing generation entities, Dao interface and mapper.</li>
